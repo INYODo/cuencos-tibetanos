@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabiduría Práctica Tibetana - Pedro Marano | Espacio INYO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --oro-inyo: #b08d57;
+            --oscuro: #1a1a1a;
+            --claro: #fdfbf9;
+            --blanco: #ffffff;
+            --stone-600: #57534e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--oscuro);
+            background-color: var(--claro);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAVEGACIÓN ECOSISTEMA INYO --- */
+        #menu-toggle { display: none; }
+        .btn-hamburguesa {
+            position: fixed; top: 24px; left: 24px; z-index: 1000;
+            cursor: pointer; background: rgba(26, 26, 26, 0.1); backdrop-filter: blur(8px);
+            padding: 14px; border-radius: 2px; border: 1px solid rgba(26,26,26,0.1);
+            color: var(--oscuro); transition: 0.3s all ease;
+        }
+        .btn-hamburguesa:hover { background: var(--oscuro); color: white; }
+        
+        #side-menu {
+            position: fixed; top: 0; left: 0; width: 290px; height: 100vh;
+            background: var(--claro); z-index: 1001; 
+            box-shadow: 15px 0 40px rgba(0,0,0,0.05);
+            transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 45px; border-right: 1px solid #eae6e1;
+        }
+        #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
+        #menu-overlay {
+            position: fixed; inset: 0; background: rgba(26,26,26,0.3); 
+            z-index: 1000; display: none; backdrop-filter: blur(4px);
+        }
+        #menu-toggle:checked ~ #menu-overlay { display: block; }
+
+        .side-menu-content p { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #a8a29e; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #eae6e1; padding-bottom: 15px; font-weight: 700; font-style: italic; }
+        .side-menu-links { list-style: none; }
+        .side-menu-links li { margin-bottom: 22px; }
+        .side-menu-links a { text-decoration: none; color: var(--oscuro); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; font-style: italic; transition: color 0.3s; }
+        .side-menu-links a:hover { color: var(--oro-inyo); }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 65vh;
+            background: linear-gradient(rgba(253, 251, 249, 0.8), rgba(253, 251, 249, 0.93)), url('imagen/fondonoasig.jpeg') center/cover fixed;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem 24px; text-align: center; border-bottom: 1px solid #eae6e1;
+        }
+        .hero p.subtitle-top { font-size: 11px; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; color: var(--oro-inyo); margin-bottom: 1rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--oscuro); tracking-tight; font-weight: 700; text-transform: uppercase; line-height: 1.2; max-width: 800px; }
+        .hero p.tagline { font-style: italic; font-size: 1.2rem; color: var(--stone-600); margin-top: 0.8rem; }
+
+        /* --- CONTENEDORES RESPONSIVE FLUIDOS --- */
+        .container { max-w: 800px; margin: 0 auto; padding: 4rem 24px; text-align: center; width: 100%; overflow: hidden; }
+        
+        /* TEXTO BASE MÓVIL BLINDADO */
+        .bloque-texto { text-align: left; width: 100%; margin: 0 auto 4rem auto; }
+        .bloque-texto h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; color: var(--oscuro); margin-bottom: 2rem; text-align: center; font-style: italic; line-height: 1.3; }
+        .bloque-texto p { margin-bottom: 1.5rem; font-size: 1rem; color: #444; font-weight: 300; word-wrap: break-word; }
+        .bloque-texto p strong { font-weight: 600; color: var(--oscuro); }
+        
+        .highlight-box { background: #fff; border-left: 3px solid var(--oro-inyo); padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.01); font-style: italic; word-wrap: break-word; }
+
+        /* GRILLA DE IMÁGENES INTEGRADA */
+        .grid-imagenes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 3rem 0; width: 100%; }
+        .grid-imagenes img { width: 100%; height: 200px; object-fit: cover; border: 1px solid #eae6e1; transition: transform 0.3s ease; }
+        .grid-imagenes img:hover { transform: scale(1.02); }
+
+        /* BENEFICIOS ADAPTATIVOS */
+        .beneficios { background: #fff; padding: 2.5rem 1.5rem; border: 1px solid #eae6e1; margin-bottom: 4rem; text-align: left; width: 100%; }
+        .beneficios h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--oscuro); margin-bottom: 1.5rem; font-weight: 400; border-b: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .beneficios ul { list-style: none; }
+        .beneficios ul li { margin-bottom: 1.2rem; font-size: 0.95rem; color: var(--stone-600); padding-left: 1.5rem; position: relative; word-wrap: break-word; }
+        .beneficios ul li::before { content: "•"; position: absolute; left: 0; color: var(--oro-inyo); font-weight: bold; font-size: 1.2rem; line-height: 1; }
+        
+        .meta-info { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--oro-inyo); background: #fdfaf6; padding: 1.2rem 1rem; border: 1px dashed #eae6e1; text-align: center; line-height: 1.5; }
+
+        /* --- PRECIOS ADAPTATIVOS --- */
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .card-inversion { background: var(--blanco); padding: 3.5rem 2rem; border-top: 3px solid var(--oro-inyo); transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.02); max-w: 480px; margin: 3rem auto 5rem auto; border-radius: 4px; }
+        .card-inversion h4 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--oscuro); }
+        .price { font-size: 2.6rem; font-weight: 400; color: var(--oro-inyo); margin: 1.2rem 0; font-family: 'Playfair Display', serif; }
+        .card-desc { font-size: 0.85rem; color: #777; margin-bottom: 2rem; font-style: italic; }
+        
+        .btn-reserva { display: block; background: var(--oscuro); color: var(--blanco); padding: 1.2rem 1rem; text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; text-transform: uppercase; text-align: center; }
+        .btn-reserva:hover { background: var(--oro-inyo); }
+
+        /* --- PERFIL PROFESOR RESPONSIVE --- */
+        .perfil-section { background: var(--blanco); padding: 5rem 24px; border-top: 1px solid #eae6e1; border-b: 1px solid #eae6e1; width: 100%; }
+        .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem; max-width: 1000px; margin: 0 auto; }
+        .foto-pedro { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 6px solid var(--claro); box-shadow: 0 15px 35px rgba(0,0,0,0.04); }
+        .texto-pedro { flex: 1; min-width: 260px; text-align: left; }
+        .texto-pedro h2 { font-family: 'Playfair Display', serif; color: var(--oscuro); font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; }
+        .texto-pedro p { font-style: italic; color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
+
+        /* --- FOOTER RESPONSIVE --- */
+        footer { background: var(--blanco); color: var(--oscuro); padding: 5rem 24px; text-align: center; width: 100%; overflow: hidden; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 40px; font-style: italic; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; max-width: 900px; margin: 0 auto; font-style: italic; }
+        .footer-nav a { text-decoration: none; color: var(--oscuro); border-bottom: 1px solid #e2e0dc; padding-bottom: 6px; transition: all 0.3s; }
+        .footer-nav a:hover { color: var(--oro-inyo); border-color: var(--oro-inyo); }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p.tagline { font-size: 1rem; }
+            .bloque-texto h2 { font-size: 1.4rem; }
+            .perfil-container { text-align: center; }
+            .texto-pedro { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="btn-hamburguesa">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label id="menu-overlay" for="menu-toggle"></label>
+
+    <nav id="side-menu">
+        <label for="menu-toggle" style="position:absolute; top:24px; right:24px; cursor:pointer; color:#bbb; font-size:1.2rem;"><i class="fas fa-times"></i></label>
+        <div class="side-menu-content">
+            <p>Espacio INYO ☯️</p>
+            <ul class="side-menu-links">
+                <li><a href="https://inyodo.github.io/masaje-japones-/">Masaje Japonés</a></li>
+                <li><a href="https://inyodo.github.io/hiit-calistenia/">HIIT Calistenia</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/yoga.html">Clases de Yoga</a></li>
+                <li><a href="https://inyodo.github.io/Coaching-/">Coaching Online</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html">Zen Stretching</a></li>
+                <li><a href="https://inyodo.github.io/stretching-belengonzalez/">Stretching</a></li>
+                <li><a href="https://inyodo.github.io/chamanismo/">Chamanismo</a></li>
+                <li><a href="https://inyodo.github.io/Qigong/">Qigong (Salud)</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html">Artes Marciales</a></li>
+                <li><a href="https://inyodo.github.io/Acupuntura/index.html">Acupuntura</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p class="subtitle-top">Formación Teórico-Práctica Especial</p>
+        <h1>Sabiduría Práctica Tibetana</h1>
+        <p class="tagline">Técnicas energético-vibracionales y físicas tradicionales</p>
+    </header>
+
+    <main class="container">
+        
+        <section class="bloque-texto">
+            <h2>El Camino de la Contemplación y Regeneración</h2>
+            <p>Este Curso repasa las técnicas energético-vibracionales y físicas de Tibet. Las mismas fueron recopiladas a través de la <strong>Tradición oral, de Maestro a Discípulo</strong>, hasta llegar a Occidente, para conseguir el estado de contemplación y serenidad que relaja la mente, repercutiendo en el cuerpo, potenciando los recursos creativos y activando la regeneración de nuestras células.</p>
+            <p>En esta experiencia teórico práctica nos sumergimos en la comprensión de la vibración como sostén y creación del Universo. Incorporamos técnicas de Meditación de gran impacto en el sistema nervioso. Aprendemos a pulsar y frotar un cuenco de sanación y las diferentes maneras de utilizarlos, en uno mismo y en otros, como herramientas de regeneración profunda, según la <strong>Tradición Bon Po</strong>.</p>
+            
+            <div class="grid-imagenes">
+                <img src="imagen/imagen1.jpeg" alt="Pedro Marano - Cuencos Tibetanos">
+                <img src="imagen/imagen2.jpeg" alt="Cuencos de Sanación Tradicionales">
+                <img src="imagen/imagen3.jpeg" alt="Instrumentos Sagrados Tibetanos">
+            </div>
+
+            <p>Son técnicas orientales de fácil aplicación, pero al mismo tiempo de un gran poder. Este curso es una posibilidad de conectarte con la vibración esencial, de sentir lo que no se ve, de volver tangible lo invisible. De conectarte con el Antiguo Tibet y facilitar, a través de las técnicas, la materialización de una vida simple, serena y saludable.</p>
+            
+            <div class="highlight-box">
+                Ganaremos la habilidad de utilizar cuencos de sanación, tinshaws y campanas en un tratamiento con el paciente acostado y sentado.
+            </div>
+        </section>
+
+        <section class="beneficios">
+            <h3>Beneficios de la Práctica</h3>
+            <ul>
+                <li>Reducen el stress.</li>
+                <li>Reducen tensiones.</li>
+                <li>Su frecuencia sonora armoniza energéticamente ambientes, cuerpo, mente y alma.</li>
+                <li>Equilibra los hemisferios de nuestro cuerpo.</li>
+                <li>Su vibración masajea las células del cuerpo y las aguas de nuestro organismo.</li>
+                <li>Equilibra las emociones de manera sutil, limpia y despeja la mente en profundidad.</li>
+            </ul>
+        </section>
+
+        <h2 class="section-title">Seminario Presencial</h2>
+        <div class="meta-info" style="max-w: 480px; margin: 0 auto;">
+            <i class="fas fa-clock mr-2"></i> Domingo 19 de Julio • 15:30 a 20:00 HS<br>
+            <i class="fas fa-map-marker-alt mr-2"></i> Sede: Espacio INYO — Carlos Tejedor 335, Lanús Oeste Centro
+        </div>
+
+        <div class="card-inversion">
+            <h4>Inversión Oficial</h4>
+            <div class="price">$228.000</div>
+            <p class="card-desc">El valor incluye material de práctica en sala y Certificado de Participación final.</p>
+            <a href="https://wa.me/541176194825?text=Hola%20Gast%C3%B3n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Por%20favor%2C%20quisiera%20solicitar%20mi%20inscripci%C3%B3n%20para%20el%20Curso%20de%20Sabidur%C3%ADa%20Pr%C3%A1ctica%20Tibetana%20con%20Pedro%20Marano%20del%20Domingo%2019%20de%20Julio.%20Entiendo%20que%20el%20valor%20de%20la%20inversi%C3%B3n%20es%20$228.000.%20Muchas%20gracias!" class="btn-reserva">Solicitar Inscripción</a>
+        </div>
+
+    </main>
+
+    <section class="perfil-section">
+        <div class="perfil-container">
+            <img src="imagen/foto-pedro.png" alt="Pedro Marano" class="foto-pedro">
+            <div class="texto-pedro">
+                <h2>Pedro Marano</h2>
+                <p>Instructor y Maestro dedicado a la transmisión de artes de armonización profunda y disciplinas tradicionales de oriente. A través de la vibración de los cuencos sagrados y la filosofía tradicional, acompaña procesos de relajación consciente para el reordenamiento biológico y la paz mental en Espacio INYO.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Espacio INYO ☯️</div>
+        <div class="footer-nav">
+            <a href="https://inyodo.github.io/masaje-japones-/">Masaje Japonés</a>
+            <a href="https://inyodo.github.io/hiit-calistenia/">HIIT Calistenia</a>
+            <a href="https://inyodo.github.io/espacio-inyo-web/yoga.html">Clases de Yoga</a>
+            <a href="https://inyodo.github.io/Coaching-/">Coaching Online</a>
+            <a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html">Zen Stretching</a>
+            <a href="https://inyodo.github.io/stretching-belengonzalez/">Stretching</a>
+            <a href="https://inyodo.github.io/chamanismo/">Chamanismo</a>
+            <a href="https://inyodo.github.io/Qigong/">Qigong (Salud)</a>
+            <a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html">Artes Marciales</a>
+            <a href="https://inyodo.github.io/Acupuntura/index.html">Acupuntura</a>
+        </div>
+        <p style="margin-top: 50px; font-size: 10px; color: #a8a29e; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">© 2026 Espacio INYO - Carlos Tejedor 335, Lanús Oeste Centro</p>
+    </footer>
+
+</body>
+</html>
