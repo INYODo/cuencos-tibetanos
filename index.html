@@ -44,7 +44,7 @@
         }
         #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
         #menu-overlay {
-            position: fixed; inset: 0; background: rgba(26,26,26,0.3); 
+            position: fixed; inset: 0; background: rgba(26, 26, 26, 0.3); 
             z-index: 1000; display: none; backdrop-filter: blur(4px);
         }
         #menu-toggle:checked ~ #menu-overlay { display: block; }
@@ -55,10 +55,10 @@
         .side-menu-links a { text-decoration: none; color: var(--oscuro); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; font-style: italic; transition: color 0.3s; }
         .side-menu-links a:hover { color: var(--oro-inyo); }
 
-        /* --- HERO --- */
+        /* --- HERO CON TU IMAGEN PNG PROPIA --- */
         .hero {
             min-height: 65vh;
-            background: linear-gradient(rgba(253, 251, 249, 0.8), rgba(253, 251, 249, 0.93)), url('imagen/fondonoasig.jpeg') center/cover fixed;
+            background: linear-gradient(rgba(253, 251, 249, 0.8), rgba(253, 251, 249, 0.93)), url('imagen/fondo-inicio.png') center/cover fixed;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             padding: 2rem 24px; text-align: center; border-bottom: 1px solid #eae6e1;
         }
@@ -81,6 +81,14 @@
         .grid-imagenes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 3rem 0; width: 100%; }
         .grid-imagenes img { width: 100%; height: 200px; object-fit: cover; border: 1px solid #eae6e1; transition: transform 0.3s ease; }
         .grid-imagenes img:hover { transform: scale(1.02); }
+
+        /* SECCIÓN DE VIDEOS SHORTS RESPONSIVE */
+        .seccion-videos { margin: 4rem 0; text-align: center; width: 100%; }
+        .seccion-videos h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--oscuro); margin-bottom: 2rem; font-weight: 400; font-style: italic; }
+        .grid-shorts { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; width: 100%; }
+        .contenedor-short { width: 100%; max-width: 310px; background: #fff; border: 1px solid #eae6e1; padding: 12px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .contenedor-short iframe { width: 100%; height: 480px; border-radius: 2px; border: none; }
+        .contenedor-short p { font-size: 12px; margin-top: 10px; font-style: italic; color: var(--stone-600); line-height: 1.4; font-weight: 600; }
 
         /* BENEFICIOS ADAPTATIVOS */
         .beneficios { background: #fff; padding: 2.5rem 1.5rem; border: 1px solid #eae6e1; margin-bottom: 4rem; text-align: left; width: 100%; }
@@ -122,6 +130,8 @@
             .bloque-texto h2 { font-size: 1.4rem; }
             .perfil-container { text-align: center; }
             .texto-pedro { text-align: center; }
+            .contenedor-short { max-width: 100%; }
+            .contenedor-short iframe { height: 450px; }
         }
     </style>
 </head>
@@ -166,15 +176,34 @@
             <p>En esta experiencia teórico práctica nos sumergimos en la comprensión de la vibración como sostén y creación del Universo. Incorporamos técnicas de Meditación de gran impacto en el sistema nervioso. Aprendemos a pulsar y frotar un cuenco de sanación y las diferentes maneras de utilizarlos, en uno mismo y en otros, como herramientas de regeneración profunda, según la <strong>Tradición Bon Po</strong>.</p>
             
             <div class="grid-imagenes">
-                <img src="imagen/imagen1.jpeg" alt="Pedro Marano - Cuencos Tibetanos">
-                <img src="imagen/imagen2.jpeg" alt="Cuencos de Sanación Tradicionales">
-                <img src="imagen/imagen3.jpeg" alt="Instrumentos Sagrados Tibetanos">
+                <img src="imagen/imagen1.png" alt="Pedro Marano - Cuencos Tibetanos">
+                <img src="imagen/imagen2.png" alt="Cuencos de Sanación Tradicionales">
+                <img src="imagen/imagen3.png" alt="Instrumentos Sagrados Tibetanos">
             </div>
 
             <p>Son técnicas orientales de fácil aplicación, pero al mismo tiempo de un gran poder. Este curso es una posibilidad de conectarte con la vibración esencial, de sentir lo que no se ve, de volver tangible lo invisible. De conectarte con el Antiguo Tibet y facilitar, a través de las técnicas, la materialización de una vida simple, serena y saludable.</p>
             
             <div class="highlight-box">
                 Ganaremos la habilidad de utilizar cuencos de sanación, tinshaws y campanas en un tratamiento con el paciente acostado y sentado.
+            </div>
+        </section>
+
+        <section class="seccion-videos">
+            <h3>Registro del Método en el Mundo</h3>
+            <p style="text-align: left; margin-bottom: 2rem; font-size: 0.95rem; color: #444; font-weight: 300;">
+                La transmisión de este conocimiento trasciende fronteras. Pedro Marano comparte estas herramientas sagradas de sanación no solo en Argentina, sino a nivel internacional, reflejado en sus formaciones dictadas en centros holísticos de <strong>Bangkok, Tailandia</strong>.
+            </p>
+            
+            <div class="grid-shorts">
+                <div class="contenedor-short">
+                    <iframe src="https://www.youtube.com/embed/jJYr2oU0MRw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p><i class="fas fa-globe-asia mr-1"></i> Formación dictada en Bangkok, Tailandia</p>
+                </div>
+                
+                <div class="contenedor-short">
+                    <iframe src="https://www.youtube.com/embed/n0-OypnJ3mg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p><i class="fas fa-wave-square mr-1"></i> Demostración: El efecto vibracional en el agua del organismo</p>
+                </div>
             </div>
         </section>
 
