@@ -67,7 +67,7 @@
         .hero p.tagline { font-style: italic; font-size: 1.2rem; color: var(--stone-600); margin-top: 0.8rem; }
 
         /* --- CONTENEDORES RESPONSIVE FLUIDOS --- */
-        .container { max-w: 800px; margin: 0 auto; padding: 4rem 24px; text-align: center; width: 100%; overflow: hidden; }
+        .container { max-width: 800px; margin: 0 auto; padding: 4rem 24px; text-align: center; width: 100%; overflow: hidden; }
         
         /* TEXTO BASE MÓVIL BLINDADO */
         .bloque-texto { text-align: left; width: 100%; margin: 0 auto 4rem auto; }
@@ -92,7 +92,7 @@
 
         /* BENEFICIOS ADAPTATIVOS */
         .beneficios { background: #fff; padding: 2.5rem 1.5rem; border: 1px solid #eae6e1; margin-bottom: 4rem; text-align: left; width: 100%; }
-        .beneficios h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--oscuro); margin-bottom: 1.5rem; font-weight: 400; border-b: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .beneficios h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--oscuro); margin-bottom: 1.5rem; font-weight: 400; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
         .beneficios ul { list-style: none; }
         .beneficios ul li { margin-bottom: 1.2rem; font-size: 0.95rem; color: var(--stone-600); padding-left: 1.5rem; position: relative; word-wrap: break-word; }
         .beneficios ul li::before { content: "•"; position: absolute; left: 0; color: var(--oro-inyo); font-weight: bold; font-size: 1.2rem; line-height: 1; }
@@ -101,7 +101,7 @@
 
         /* --- PRECIOS ADAPTATIVOS --- */
         .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .card-inversion { background: var(--blanco); padding: 3.5rem 2rem; border-top: 3px solid var(--oro-inyo); transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.02); max-w: 480px; margin: 3rem auto 5rem auto; border-radius: 4px; }
+        .card-inversion { background: var(--blanco); padding: 3.5rem 2rem; border-top: 3px solid var(--oro-inyo); transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.02); max-width: 480px; margin: 3rem auto 5rem auto; border-radius: 4px; }
         .card-inversion h4 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--oscuro); }
         .price { font-size: 2.6rem; font-weight: 400; color: var(--oro-inyo); margin: 1.2rem 0; font-family: 'Playfair Display', serif; }
         .card-desc { font-size: 0.85rem; color: #777; margin-bottom: 2rem; font-style: italic; }
@@ -109,8 +109,52 @@
         .btn-reserva { display: block; background: var(--oscuro); color: var(--blanco); padding: 1.2rem 1rem; text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; text-transform: uppercase; text-align: center; }
         .btn-reserva:hover { background: var(--oro-inyo); }
 
+        /* --- BADGE FLOTANTE DE CONVOCATORIA (ESTILO ORO & OSCURO) --- */
+        .floating-cuencos-badge {
+            position: fixed; bottom: 24px; left: 24px; z-index: 999;
+            max-width: 300px; background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px); color: #fff; padding: 18px 20px;
+            border-radius: 6px; border: 1px solid rgba(176, 141, 87, 0.45);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25); text-align: left;
+            transition: all 0.3s ease;
+        }
+        .floating-cuencos-badge:hover { transform: translateY(-3px); border-color: var(--oro-inyo); }
+        .badge-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 9px; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--oro-inyo); font-weight: 700; margin-bottom: 6px;
+        }
+        .badge-dot {
+            width: 7px; height: 7px; background-color: var(--oro-inyo);
+            border-radius: 50%; display: inline-block; animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+        .badge-title {
+            font-family: 'Playfair Display', serif; font-size: 1.15rem;
+            color: #fff; font-weight: 700; margin-bottom: 4px; line-height: 1.2;
+        }
+        .badge-desc {
+            font-size: 11px; color: #d6d3d1; margin-bottom: 12px; line-height: 1.4; font-style: italic;
+        }
+        .badge-btn {
+            display: block; width: 100%; text-align: center;
+            background: var(--oro-inyo); color: #fff; text-decoration: none;
+            padding: 9px 12px; font-size: 10px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px; border-radius: 2px;
+            transition: 0.3s background; font-style: normal;
+        }
+        .badge-btn:hover { background: #967543; }
+        .badge-close {
+            position: absolute; top: 8px; right: 10px; background: none;
+            border: none; color: #888; font-size: 14px; cursor: pointer; line-height: 1;
+        }
+        .badge-close:hover { color: #fff; }
+
         /* --- PERFIL PROFESOR RESPONSIVE --- */
-        .perfil-section { background: var(--blanco); padding: 5rem 24px; border-top: 1px solid #eae6e1; border-b: 1px solid #eae6e1; width: 100%; }
+        .perfil-section { background: var(--blanco); padding: 5rem 24px; border-top: 1px solid #eae6e1; border-bottom: 1px solid #eae6e1; width: 100%; }
         .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem; max-width: 1000px; margin: 0 auto; }
         .foto-pedro { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 6px solid var(--claro); box-shadow: 0 15px 35px rgba(0,0,0,0.04); }
         .texto-pedro { flex: 1; min-width: 260px; text-align: left; }
@@ -132,10 +176,28 @@
             .texto-pedro { text-align: center; }
             .contenedor-short { max-width: 100%; }
             .contenedor-short iframe { height: 450px; }
+            .floating-cuencos-badge { left: 16px; bottom: 16px; right: 16px; max-width: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- BADGE FLOTANTE DE PRÓXIMO SEMINARIO -->
+    <div id="floatingCuencosBadge" class="floating-cuencos-badge">
+        <button onclick="document.getElementById('floatingCuencosBadge').style.display='none'" class="badge-close" title="Cerrar">✕</button>
+        <div class="badge-tag">
+            <span class="badge-dot"></span>
+            <span>Próximo Seminario</span>
+        </div>
+        <div class="badge-title">Sabiduría Tibetana</div>
+        <div class="badge-desc">
+            Domingo 1 de Noviembre • 15:30 a 20:00 hs<br>
+            Con Pedro Marano en Espacio INYO. Inversión: <strong>$188.000.-</strong>
+        </div>
+        <a href="#inscripcion" onclick="document.getElementById('floatingCuencosBadge').style.display='none'" class="badge-btn">
+            Ver Programa & Reservar
+        </a>
+    </div>
 
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="btn-hamburguesa">
@@ -219,17 +281,17 @@
             </ul>
         </section>
 
-        <h2 class="section-title">Seminario Presencial</h2>
-        <div class="meta-info" style="max-w: 480px; margin: 0 auto;">
-            <i class="fas fa-clock mr-2"></i> Domingo 19 de Julio • 15:30 a 20:00 HS<br>
+        <h2 id="inscripcion" class="section-title">Seminario Presencial</h2>
+        <div class="meta-info" style="max-width: 480px; margin: 0 auto;">
+            <i class="fas fa-clock mr-2"></i> Domingo 1 de Noviembre • 15:30 a 20:00 HS<br>
             <i class="fas fa-map-marker-alt mr-2"></i> Sede: Espacio INYO — Carlos Tejedor 335, Lanús Oeste Centro
         </div>
 
         <div class="card-inversion">
             <h4>Inversión Oficial</h4>
-            <div class="price">$228.000</div>
+            <div class="price">$188.000</div>
             <p class="card-desc">El valor incluye material de práctica en sala y Certificado de Participación final.</p>
-            <a href="https://wa.me/541176194825?text=Hola%20Gast%C3%B3n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Por%20favor%2C%20quisiera%20solicitar%20mi%20inscripci%C3%B3n%20para%20el%20Curso%20de%20Sabidur%C3%ADa%20Pr%C3%A1ctica%20Tibetana%20con%20Pedro%20Marano%20del%20Domingo%2019%20de%20Julio.%20Entiendo%20que%20el%20valor%20de%20la%20inversi%C3%B3n%20es%20$228.000.%20Muchas%20gracias!" class="btn-reserva">Solicitar Inscripción</a>
+            <a href="https://wa.me/541176194825?text=Hola%20Gast%C3%B3n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Por%20favor%2C%20quisiera%20solicitar%20mi%20inscripci%C3%B3n%20para%20el%20Curso%20de%20Sabidur%C3%ADa%20Pr%C3%A1ctica%20Tibetana%20con%20Pedro%20Marano%20del%20Domingo%201%20de%20Noviembre.%20Entiendo%20que%20el%20valor%20de%20la%20inversi%C3%B3n%20es%20$188.000.%20Muchas%20gracias!" class="btn-reserva">Solicitar Inscripción</a>
         </div>
 
     </main>
